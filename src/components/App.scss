@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather:300,400,900,900i|Montserrat:300,400|Material+Icons');
+
+body, html {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #605272;
+}
+
+a.link {
+  color: #605272;     
+  text-decoration: none;      
+}
+
+a.link:hover {
+  opacity: 0.7;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  main {
+    flex: 1;
+  }
+}

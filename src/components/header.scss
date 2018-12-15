@@ -1,0 +1,41 @@
+header {
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 0 100px;
+
+  *:last-child {
+    margin-left: auto;
+  }
+
+  h1 {
+    padding: 0 15px;
+    margin: 0;
+
+    a {
+      text-decoration: none;
+      line-height: 75px;
+      color: #605272;
+      user-select: none;
+
+      span {
+        color: rgba(120, 19, 254, 0.7);
+        font-weight: 300;
+      }
+    }
+
+    &:hover {
+        opacity: 0.8;
+        background-color: rgba(0, 0, 0, 0.03);
+    }
+  }
+
+  nav .menu-button {
+    display: inline-block;
+    line-height: 75px;
+    padding: 0px 15px;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.03);
+    }
+  }
+}

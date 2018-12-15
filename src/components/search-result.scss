@@ -1,0 +1,46 @@
+.search-result {
+    text-align: left;
+    width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    font-size: 14px;
+
+    h4 {
+        margin: 0;
+        padding: 0;
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    &:not(:last-child) {
+        border-bottom: 1px dotted #ddd;
+    }
+
+    .value-box {
+        margin-top: 10px;
+        padding: 10px;
+        background-color: #f5f5f5;
+        border-radius: 5px;
+    }
+
+    .highlight {
+        background-color: rgba(255, 255, 0, 0.75);
+    }
+
+    .attributes {
+        margin-bottom: 15px;
+
+        .attribute {
+            margin: 5px auto;
+            .title {
+                display: inline-block;
+                width: 100px;
+                font-size: 12px;
+            }
+    
+            .value {
+                display: inline-block;
+            }
+        }
+    }
+}
