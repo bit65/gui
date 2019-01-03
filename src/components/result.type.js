@@ -21,7 +21,7 @@ class GenericResult extends Component {
             <div>
                 {results.length > 0 && (
                     <span>
-                        <b>{this.name}</b>
+                        <h1>{this.name}</h1>
                         <ul>
                             {results.map(o=>(
                                 <li><a href={this.link+o.key}>{o.key}</a></li>
@@ -97,7 +97,7 @@ export class PermissionResult extends GenericResult {
             <div>
                 {results.length > 0 && (
                     <span>
-                        <b>{this.name}</b>
+                        <h1>{this.name}</h1>
                         <ul>
                             {results.map(o=> {
                                 
