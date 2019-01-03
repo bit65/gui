@@ -99,6 +99,7 @@ export class AssetPage extends Component {
                         componentId="MetaData"
                         
                         defaultQuery={() => ({
+                            size: 10000,
                             query: [
                                 {"term": {"ASSET.keyword": this.apk}},
                                 {"term": {"TYPE.keyword": "META"}},
@@ -112,6 +113,7 @@ export class AssetPage extends Component {
                         componentId="SOFiles"
                         
                         defaultQuery={() => ({
+                            size: 10000,
                             query: [
                                 {"term": {"ASSET.keyword": this.apk}},
                                 {"term": {"TYPE.keyword": "ELF"}},
