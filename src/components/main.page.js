@@ -1,42 +1,141 @@
 import React, { Component } from 'react';
+import { ReactiveBase, DataSearch, ReactiveComponent, MultiDataList} from '@appbaseio/reactivesearch';
+
 import './main.page.scss';
 import { SearchResult } from './search-result';
+import {LibraryResult, FileResult, ModuleResult, AssetResult, StringResult} from './result.type'
+import {elasticuri} from './config'
+
+class SidePanelWrapper extends Component {
+
+    render() {
+
+        return (
+            <div id="mainresults">
+                <AssetResult {...this.props}/>
+                <LibraryResult {...this.props}/>
+                <ModuleResult {...this.props}/>
+                <FileResult {...this.props}/>
+                <StringResult {...this.props}/>
+            </div>
+        )
+    }
+}
 
 export class MainPage extends Component {
-    state = {};
+    
+    constructor(props) {
+        super(props);
+    }
+
 
     render() {
         return (
-            <section className="main">
-                <h2>
-                    Awesome <span>slogan</span> that makes you curious
+            <ReactiveBase app="index_main" url={elasticuri}>
+                <section className="main">
+                    <h2>
+
+                        Android <span>Library</span> Search
                     </h2>
 
-                <h3>
-                    Unbelievely cool one-liner that explains <span>everything</span> as clear as possible
+                    <h3>
+                        Search Anything
                     </h3>
+                        
+                        <DataSearch
+                            innerClass={{
+                                title: 'text-title',
+                                input: 'text-input',
+                                list: 'text-list'
+                            }}
+                            componentId="SearchModule"
+                            fieldWeights={[10,5,1]}
+                            fuzziness={0}
+                            dataField={["LIBRARY_NAMES","MODULE_NAME", "FILE_NAME", "STRING_DATA"]}
+                        />
 
-                <input type="search" placeholder="e.g.: TWITTER" />
-                <a className="btn primary" onClick={() => this.setState({ showResults: true })}>Search</a>
+                        <MultiDataList
+                            className="filter-boxes"
+                            showSearch={false}
+							componentId="TypeFilter"
+							dataField="TYPE.keyword"
+							data={[
+                                { label: 'Apps', value: 'ASSET' },
+                                { label: 'Libraries', value: 'LIBRARY' },
+                                { label: 'Files', value: 'FILE' },
+								{ label: 'Modules', value: 'MODULE' },
+                                { label: 'Strings', value: 'STRING' },
+                            ]}
+                            defaultValue={["Libraries", "Files", "Apps"]}
+						/>
+                        {/* <SelectedFilters /> */}
+                        
+                        <ReactiveComponent
+                        componentId="SidePanel"
+                        react={{
+                            "and": ["SearchModule","TypeFilter"]
+                        }}
+                        defaultQuery={() => ({
+                            aggs: {
+                                assets: {
+                                    terms: {
+                                        field: 'ASSET.keyword',
+                                        size:500
+                                        
+                                    }
+                                },
+                                libraries: {
+                                    terms: {
+                                        field: 'LIBRARY_NAMES.keyword',
+                                        size:500
+                                        
+                                    }
+                                },
+                                modules: {
+                                    terms: {
+                                        field: 'MODULE_NAME.keyword',
+                                        size:500
+                                    }
+                                },
+                                files: {
+                                    terms: {
+                                        field: 'FILE_NAME.keyword',
+                                        size:500
+                                    }
+                                },
+                                strings: {
+                                    terms: {
+                                        field: 'STRING_DATA.keyword',
+                                        size:500
+                                    }
+                                }
+                            }
+                        })}
+                    >
+                        <SidePanelWrapper />
+                    </ReactiveComponent>
 
-                <div class="search-results" style={{display: this.state.showResults ? 'block' : 'none'}}>
-                    <SearchResult
-                        title={<span>login_text_<span className="highlight">twitter</span></span>}
-                        type="App Resource"
-                        package="com.harrys.tripmaster"
-                        file="classes.dex"
-                        value={<span>Sign in with <span className="highlight">Twitter</span></span>}
-                    />
+                        {/* <div className="search-results">
+                            <ReactiveList
+                                componentId="SearchList"
+                                dataField={["LIBRARY_NAMES","FILE_NAME","MODULE_NAME"]}
+                                react={{
+                                    "and": ["SearchModule"]
+                                }}
+                                pagination={true}
+                                
+                                renderData={(result) => {result.key=result._id; return React.cloneElement(<SearchResult />, result)}}
+                            />
+                        </div> */}
 
-                    <SearchResult
-                        title={<span><span className="highlight">TWITTER</span>_KEY</span>}
-                        type="App Resource"
-                        package="com.harrys.tripmaster"
-                        file="classes.dex"
-                        value="315b91832ae7644b5712c0403fb754f23005c6a2075c90f9ee821d4b91e89e85"
-                    />
-                </div>
-            </section>
+
+
+                        
+                </section>
+            </ReactiveBase>
         );
     }
 }
+
+
+

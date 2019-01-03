@@ -12,10 +12,10 @@ export class Header extends Component {
                 </h1>
 
                 <nav>
-                    <a href="#" className="link menu-button">Search</a>
-                    <a href="#" className="link menu-button">Explore</a>
-                    <a href="#" className="link menu-button">About</a>
-                    <a href="#" className="link menu-button">Contribute</a>
+                    <a href="/" className="link menu-button">Search</a>
+                    <a href="/" className="link menu-button">Explore</a>
+                    <a href="/" className="link menu-button">About</a>
+                    <a href="/" className="link menu-button">Contribute</a>
                 </nav>
             </header>
         );

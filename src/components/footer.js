@@ -5,7 +5,7 @@ export class Footer extends Component {
     render() {
         return (
             <footer>
-                <div class="row">
+                <div className="row">
                     <strong>Project</strong>
                     <ul>
                         <li>
@@ -20,7 +20,7 @@ export class Footer extends Component {
                     </ul>
                 </div>
 
-                <div class="row">
+                <div className="row">
                     <strong>Tech</strong>
                     <ul>
                         <li>
@@ -35,7 +35,7 @@ export class Footer extends Component {
                     </ul>
                 </div>
 
-                <div class="row">
+                <div className="row">
                     <strong>Resources</strong>
                     <ul>
                         <li>
@@ -53,7 +53,7 @@ export class Footer extends Component {
                     </ul>
                 </div>
 
-                <div class="row">
+                <div className="row">
                     <strong>Support</strong>
                     <ul>
                         <li>
@@ -65,10 +65,10 @@ export class Footer extends Component {
                     </ul>
                 </div>
 
-                <div class="icons">
+                <div className="icons">
                     <a href="#">
                         <svg width="30px" height="24px" viewBox="0 0 30 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
-                            <g id="Symbols" stroke="none" stroke-width="1" fill-rule="evenodd">
+                            <g id="Symbols" stroke="none" strokeWidth="1" fillRule="evenodd">
                                 <g id="Footer" transform="translate(-1047.000000, -4.000000)">
                                     <g id="Group-21">
                                         <g transform="translate(1047.000000, 3.000000)">
@@ -90,7 +90,7 @@ export class Footer extends Component {
 
                     <a href="#">
                         <svg fill="#ffffff" width="21px" height="21px" viewBox="0 0 21 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
-                            <g id="Symbols" stroke="none" stroke-width="1" fill-rule="evenodd">
+                            <g id="Symbols" stroke="none" strokeWidth="1" fillRule="evenodd">
                                 <g id="Footer" transform="translate(-1179.000000, -4.000000)">
                                     <g id="Group-21">
                                         <g transform="translate(1047.000000, 3.000000)">
@@ -104,7 +104,7 @@ export class Footer extends Component {
                     </a>
                 </div >
 
-                <div class="copyrights">
+                <div className="copyrights">
                     © 2018 bit65
             <span>All Rights Reserved</span>
                 </div>
